@@ -98,10 +98,10 @@ with PLC() as comm:
                         print(row_in_buffer)
 
                     data_buffer = [] # reset list so len goes to 0
+        except KeyboardInterrupt:
+            break
         except:
             print("Failed to write to file...")
             pass
 
         time.sleep(cycle_time) # pause the loop for the desired time
-
-
