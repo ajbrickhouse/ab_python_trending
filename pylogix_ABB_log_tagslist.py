@@ -99,7 +99,7 @@ with PLC() as comm:
 
                     data_buffer = [] # reset list so len goes to 0
         except KeyboardInterrupt:
-            break
+            sys.exit()
         except:
             print("Failed to write to file...")
             pass
