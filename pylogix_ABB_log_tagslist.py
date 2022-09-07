@@ -13,37 +13,66 @@ trend_desc = "Phase 1" # part of filename
 cycles = 99999 # number of samples to take
 cycle_time = 1 # time between cycles (Seconds)  
 buffer_size = 10 # collect this many rows before saving
-plc_ip = '192.168.1.1'
+plc_ip = '33.7.0.1'
 
-# # Blend A
-# tags = ['BLD01_PT90_00.SMTH',
-#         'BLD01_PT90_01.SMTH',
-#         'BLD01_AT90_00.SMTH',
-#         'BLD01_FT90_00.SMTH',
-#         'BLD01_PT90_02.SMTH',
-#         'BLD01_TT90_00.SMTH',
-#         'BLD01_FT90_01.SMTH',
-#         'BLD01_AT90_01.SMTH',
-#         'BLD01_TT90_01.SMTH',
-#         'BLD01_TT90_02.SMTH',
-#         'BLD01_AT90_02.SMTH',
-#         'BLD01_FCV90_00_PID.SO',
-#         'BLD01_FCV90_01_PID.SO']
-
-#Blend B
-tags = ['BLD01_PT91_00.SMTH',
-        'BLD01_PT91_01.SMTH',
-        'BLD01_AT91_00.SMTH',
-        'BLD01_FT91_00.SMTH',
-        'BLD01_PT91_02.SMTH',
-        'BLD01_TT91_00.SMTH',
-        'BLD01_FT91_01.SMTH',
-        'BLD01_AT91_01.SMTH',
-        'BLD01_TT91_01.SMTH',
-        'BLD01_TT91_02.SMTH',
-        'BLD01_AT91_02.SMTH',
-        'BLD01_FCV91_00_PID.SO',
-        'BLD01_FCV91_01_PID.SO']
+tags = ["BLD01_PIT01_00.SMTH",
+        "BLD01_PIT04_00.SMTH",
+        "BLD01_PIT05_00.SMTH",
+        "BLD01_PT21_00.SMTH",
+        "BLD01_PT21_02.SMTH",
+        "BLD01_PT22_00.SMTH",
+        "BLD01_PT22_02.SMTH",
+        "BLD01_PIT00_00.SMTH",
+        "BLD01_P21_00_PV.SMTH",
+        "BLD01_P22_00_PV.SMTH",
+        "BLD01_TT21_00.SMTH",
+        "BLD01_TT21_01.SMTH",
+        "BLD01_TT22_00.SMTH",
+        "BLD01_TT22_01.SMTH",
+        "BLD01_TT40_00.SMTH",
+        "BLD01_TT41_00.SMTH",
+        "BLD01_TT42_00.SMTH",
+        "BLD01_TT43_00.SMTH",
+        "BLD01_TT44_00.SMTH",
+        "BLD01_PT80_00.SMTH",
+        "BLD01_PT80_01.SMTH",
+        "BLD01_FT80_00.SMTH",
+        "BLD01_FT80_01.SMTH",
+        "BLD01_PT40_00.SMTH",
+        "BLD01_PT40_01.SMTH",
+        "BLD01_FT40_00.SMTH",
+        "BLD01_FT40_01.SMTH",
+        "BLD01_PT41_00.SMTH",
+        "BLD01_PT41_01.SMTH",
+        "BLD01_FT41_00.SMTH",
+        "BLD01_FT41_01.SMTH",
+        "BLD01_PT42_00.SMTH",
+        "BLD01_PT42_01.SMTH",
+        "BLD01_FT42_00.SMTH",
+        "BLD01_FT42_01.SMTH",
+        "BLD01_PT43_00.SMTH",
+        "BLD01_PT43_01.SMTH",
+        "BLD01_FT43_00.SMTH",
+        "BLD01_FT43_01.SMTH",
+        "BLD01_PT44_00.SMTH",
+        "BLD01_PT44_01.SMTH",
+        "BLD01_FT44_00.SMTH",
+        "BLD01_FT44_01.SMTH",
+        "BLD01_AT21_01.SMTH",
+        "BLD01_AT22_01.SMTH",
+        "BLD01_AT62_00.SMTH",
+        "BLD01_AT63_00.SMTH",
+        "BLD01_AT62_01.SMTH",
+        "BLD01_AT63_01.SMTH",
+        "BLD01_WT21_00.SMTH",
+        "BLD01_WT22_00.SMTH",
+        "BLD01_AT21_00.SMTH",
+        "BLD01_AT22_00.SMTH",
+        "BLD01_AT40_00.SMTH",
+        "BLD01_AT41_00.SMTH",
+        "BLD01_AT42_00.SMTH",
+        "BLD01_AT43_00.SMTH",
+        "BLD01_AT44_00.SMTH"]
 
 # Building first row of CSV (Header)
 col_tags = []
@@ -87,6 +116,7 @@ with PLC() as comm:
         row = [x.Value for x in ret] # Get the tag values from the info
         row.insert(0, str(datetime.datetime.now())) # Insert the current DateTime into the begining of the list
         row.insert(0, cycle) # Insert the current Index into the begining of the list
+        # print(row)
         data_buffer.append(row) # append row data into buffer
         try:
             if len(data_buffer) >= buffer_size: # if the buffer has reached the buffer_size, start saving.
