@@ -13,7 +13,7 @@ trend_desc = "Phase 1" # part of filename
 cycles = 99999 # number of samples to take
 cycle_time = 1 # time between cycles (Seconds)  
 buffer_size = 10 # collect this many rows before saving
-plc_ip = '33.7.0.1'
+plc_ip = '192.168.0.1'
 
 tags = ["BLD01_PIT01_00.SMTH",
         "BLD01_PIT04_00.SMTH",
