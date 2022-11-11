@@ -12,7 +12,7 @@ device_number = "Blend B" # part of filename
 trend_desc = "Phase 1" # part of filename
 cycles = 99999 # number of samples to take
 cycle_time = 1 # time between cycles (Seconds)  
-buffer_size = 10 # collect this many rows before saving
+buffer_size = 10 # collect this many rows before saving to file
 plc_ip = '192.168.0.1'
 
 tags = ["BLD01_PIT01_00.SMTH",
